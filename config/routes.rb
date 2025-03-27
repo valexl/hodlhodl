@@ -2,6 +2,8 @@
 
 module Hodlhodl
   class Routes < Hanami::Routes
-    # Add your routes here. See https://guides.hanamirb.org/routing/overview/ for details.
+    slice :web, at: "/" do
+      get "/", to: "home.index"
+    end
   end
 end

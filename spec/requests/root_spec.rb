@@ -6,6 +6,6 @@ RSpec.describe "Root", type: :request do
 
     # Generate new action via:
     #   `bundle exec hanami generate action home.index --url=/`
-    expect(last_response.status).to be(404)
+    expect(last_response).to be_successful
   end
 end
