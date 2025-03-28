@@ -2,8 +2,9 @@
 
 module Hodlhodl
   class Routes < Hanami::Routes
-    slice :web, at: "/" do
-      get "/", to: "home.index"
-    end
+    get "/transactions/:uid", to: "transactions.show"
+    # slice :web, at: "/" do
+    #   get "/", to: "transactions.new"
+    # end
   end
 end

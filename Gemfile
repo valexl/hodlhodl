@@ -22,6 +22,7 @@ end
 
 group :development, :test do
   gem "dotenv"
+  gem "byebug"
 end
 
 group :cli, :development do

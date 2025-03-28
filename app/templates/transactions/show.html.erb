@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="card shadow-sm mx-auto" style="max-width: 900px;">
+    <div class="card-body p-4 p-md-5">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="card-title fw-bold mb-0">Checkout</h1>
+        <a href="/" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left me-2"></i>Back
+        </a>
+      </div>
+
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+          <div class="mb-4">
+            <p class="text-secondary mb-1">You send</p>
+            <h2 class="fw-bold mb-1"><%= transaction.amount_usdt %> USDT</h2>
+            <p class="blockchain-text mb-0">blockchain: omni layer</p>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-secondary mb-1">Exchange fee</p>
+            <h3 class="fw-bold mb-1"><%= '%.8f' % transaction.exchange_fee_btc %> BTC</h3>
+            <p class="note-text mb-0">The exchange fee is already included in the displayed amount you'll get</p>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-secondary mb-1">Recipient address</p>
+            <div class="border rounded p-3 bg-light">
+              <p class="fw-bold mb-0 text-break"><%= transaction.recipient_address %></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <div class="mb-4">
+            <p class="text-secondary mb-1">You get</p>
+            <h2 class="fw-bold mb-1">~ <%= '%.8f' % transaction.estimated_btc %> BTC</h2>
+            <p class="blockchain-text mb-0">blockchain: bitcoin</p>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-secondary mb-1">Network fee</p>
+            <h3 class="fw-bold mb-1"> <%= '%.8f' % transaction.network_fee_btc %> BTC</h3>
+            <p class="note-text mb-0">The network fee is already included in the displayed amount you'll get</p>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-secondary mb-1">Exchange rate</p>
+            <div class="border rounded p-3 bg-light">
+              <p class="fw-bold mb-0">1 USDT ~ <%= '%.8f' % transaction.rate_btc %> BTC</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
