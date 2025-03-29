@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="card shadow-sm mx-auto" style="max-width: 900px;">
+    <div class="card-body p-4 p-md-5">
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="card-title fw-bold mb-0">New Transaction</h1>
+        <a href="/" class="btn btn-outline-secondary">
+          <i class="bi bi-arrow-left me-2"></i>Back
+        </a>
+      </div>
+
+      <form action="/transactions" method="post">
+        <div class="row">
+          <!-- Left column -->
+          <div class="col-md-6">
+            <!-- Amount -->
+            <div class="mb-4">
+              <label for="amount_usdt" class="text-secondary mb-1">You send</label>
+              <input type="number" min="0" step="any" name="amount_usdt" id="amount_usdt"
+                class="form-control <%= 'is-invalid' if errors[:amount_usdt] %>"
+                placeholder="Enter USDT amount"
+                data-btc-rate="<%= btc_rate %>"
+                value="<%= values[:amount_usdt] %>">
+              <% if errors[:amount_usdt] %>
+                <div class="invalid-feedback d-block"><%= errors[:amount_usdt] %></div>
+              <% end %>
+            </div>
+
+            <!-- Wallet address -->
+            <div class="mb-4">
+              <label for="wallet_address" class="text-secondary mb-1">Wallet address</label>
+              <input type="text" name="wallet_address" id="wallet_address"
+                class="form-control <%= 'is-invalid' if errors[:wallet_address] %>"
+                placeholder="Enter Bitcoin address"
+                value="<%= values[:wallet_address] %>">
+              <% if errors[:wallet_address] %>
+                <div class="invalid-feedback d-block"><%= errors[:wallet_address] %></div>
+              <% end %>
+            </div>
+          </div>
+
+          <!-- Right column -->
+          <div class="col-md-6">
+            <!-- Email -->
+            <div class="mb-4">
+              <label for="email" class="text-secondary mb-1">Email</label>
+              <input type="email" name="email" id="email"
+                class="form-control <%= 'is-invalid' if errors[:email] %>"
+                placeholder="Enter your email"
+                value="<%= values[:email] %>">
+              <% if errors[:email] %>
+                <div class="invalid-feedback d-block"><%= errors[:email] %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">  
+          <div class="col-md-12">
+            <!-- Agree checkbox -->
+            <div class="form-check mb-4 mt-2">
+              <input class="form-check-input <%= 'is-invalid' if errors[:agree] %>" type="checkbox" name="agree" id="termsCheck"
+                <%= 'checked' if values[:agree] == 'on' %>>
+              <label class="form-check-label text-secondary" for="termsCheck">
+                I agree with <a href="#">Terms of Use</a>, <a href="#">Privacy Policy</a> and <a href="#">AML/KYC</a>
+              </label>
+              <% if errors[:agree] %>
+                <div class="invalid-feedback d-block"><%= errors[:agree] %></div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info block -->
+        <div class="border rounded p-4 bg-light">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <p class="text-secondary mb-1">Estimated BTC</p>
+              <div class="fs-5 fw-bold" id="estimated_btc">~</div>
+            </div>
+            <div class="col-md-6 mb-3">
+              <p class="text-secondary mb-1">Exchange fee</p>
+              <div class="fw-bold" id="exchange_fee_btc">~</div>
+              <p class="note-text mb-0 text-muted small">Included in the amount you'll get</p>
+            </div>
+            <div class="col-md-6 mb-3">
+              <p class="text-secondary mb-1">Network fee</p>
+              <div class="fw-bold" id="network_fee_btc">0.0005 BTC</div>
+              <p class="note-text mb-0 text-muted small">Included in the amount you'll get</p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-secondary mb-1">Exchange rate</p>
+              <div class="border rounded p-3 bg-white">
+                <p class="fw-bold mb-0">1 USDT ~ <%= '%.8f' % btc_rate %> BTC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary w-100 py-3 rounded-3 mb-4">
+            Create Transaction
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

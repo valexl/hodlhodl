@@ -1,7 +1,6 @@
 RSpec.describe "GET /transactions/:uid", type: :request, db: true do
   let(:repo) { Hodlhodl::Repos::TransactionRepo.new }
 
-
   before do
     repo.create(
       uid: "abc123",

@@ -11,62 +11,18 @@ body {
   color: #6c757d;
   font-size: 0.875rem;
 }
-.calculator-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-}
-.form-control-lg {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-.input-group-text {
+
+.bg-light-gray {
   background-color: #f8f9fa;
-  border-left: none;
 }
-.exchange-info {
-  color: #6c757d;
-  font-size: 0.95rem;
-}
-.included {
+.text-green {
   color: #28a745;
-  text-decoration: underline;
 }
-.fee-section {
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  padding: 15px;
-  margin: 20px 0;
-}
-.fee-label {
-  color: #6c757d;
-}
-.fee-value {
-  color: #333;
-  font-weight: 500;
-}
-.swap-icon {
-  background-color: #e9ecef;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.next-btn {
+.btn-mint {
   background-color: #8de0b3;
-  border: none;
   color: white;
-  font-weight: 500;
-  padding: 12px;
 }
-.next-btn:hover {
+.btn-mint:hover {
   background-color: #7bc99e;
-}
-.input-bg {
-  background-color: #f8f9fa;
-}
-.dropdown-toggle::after {
-  margin-left: 0.5em;
+  color: white;
 }

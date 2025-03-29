@@ -41,3 +41,5 @@ group :test do
   gem "capybara"
   gem "rack-test"
 end
+
+gem "webmock", "~> 3.25", :group => :test

@@ -51,7 +51,8 @@ CREATE TABLE public.transactions (
     estimated_btc double precision NOT NULL,
     rate_btc double precision NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    email text
 );
 
 
@@ -107,4 +108,5 @@ CREATE UNIQUE INDEX transactions_uid_index ON public.transactions USING btree (u
 SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (filename) VALUES
-('20250327164747_create_transactions.rb');
+('20250327164747_create_transactions.rb'),
+('20250328195954_add_email_to_transactions.rb');
