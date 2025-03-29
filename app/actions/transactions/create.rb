@@ -11,13 +11,15 @@ module Hodlhodl
 
 
         def handle(request, response)
-          result_type, payload = create_transaction.call(request.params.to_h)
+          result = create_transaction.call(request.params.to_h)
 
-          if result_type == :ok
-            response.redirect "/transactions/#{payload[:uid]}"
+          if result.success?
+            transaction = result.value!
+            response.redirect "/transactions/#{transaction[:uid]}"
           else
+            errors = result.failure
             response.status = 422
-            response.render view, errors: payload, values: request.params.to_h, btc_rate: coingecko_gateway.call
+            response.render view, errors: errors, values: request.params.to_h, btc_rate: coingecko_gateway.call
           end
         end
 

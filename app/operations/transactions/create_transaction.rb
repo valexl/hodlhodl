@@ -3,37 +3,18 @@ module Hodlhodl
     module Transactions
       class CreateTransaction
         include Deps[
-          "repos.transaction_repo",
-          "gateways.coingecko_gateway"
+          "gateways.coingecko_gateway",
+          "use_cases.transactions.convert_to_btc",
+          "use_cases.transactions.calculate_fees",
+          "use_cases.transactions.start_transaction"
         ]
 
         def call(attrs)
-          amount = attrs[:amount_usdt].to_f
           rate = coingecko_gateway.call
+          amount_btc = convert_to_btc.call(amount_usdt: attrs[:amount_usdt].to_f, rate: rate)
+          fees = calculate_fees.call(amount_btc: amount_btc)
 
-          errors = {
-            amount_usdt: Guards::Transactions::AmountGuard.call(amount, btc_rate: rate),
-            wallet_address: Guards::Transactions::WalletAddressGuard.call(attrs[:wallet_address]),
-            email: Guards::Transactions::EmailGuard.call(attrs[:email]),
-            agree: Guards::Transactions::AgreementGuard.call(attrs[:agree])
-          }.compact
-
-          return [:error, errors] if errors.any?
-
-          transaction = transaction_repo.create(
-            uid: SecureRandom.hex(6),
-            amount_usdt: amount.to_i,
-            recipient_address: attrs[:wallet_address],
-            email: attrs[:email],
-            exchange_fee_btc: Hodlhodl::Config::Transaction.exchange_fee_for(amount),
-            network_fee_btc: Hodlhodl::Config::Transaction.network_fee,
-            estimated_btc: Hodlhodl::Guards::Transactions::AmountGuard.estimated_btc(amount, rate),
-            rate_btc: rate,
-            created_at: Time.now,
-            updated_at: Time.now
-          )
-
-          [:ok, transaction]
+          result = start_transaction.call(attrs: attrs, rate: rate, fees: fees)
         end
       end
     end
