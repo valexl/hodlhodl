@@ -15,6 +15,8 @@ gem "dry-operation"
 gem "puma"
 gem "rake"
 gem "pg"
+gem "faraday"
+gem 'bitcoinrb'
 
 group :development do
   gem "hanami-webconsole", "~> 2.2"

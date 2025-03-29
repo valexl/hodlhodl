@@ -1,0 +1,13 @@
+[
+  {
+    "txid": "abc111",
+    "vout": 0,
+    "value": 50000,
+    "status": {
+      "confirmed": true,
+      "block_height": 241000,
+      "block_hash": "000000abc",
+      "block_time": 1743000000
+    }
+  }
+]
