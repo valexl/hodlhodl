@@ -52,7 +52,9 @@ CREATE TABLE public.transactions (
     rate_btc double precision NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    email text
+    email text,
+    status text DEFAULT 'pending'::text,
+    txid text
 );
 
 
@@ -109,4 +111,5 @@ SET search_path TO "$user", public;
 
 INSERT INTO schema_migrations (filename) VALUES
 ('20250327164747_create_transactions.rb'),
-('20250328195954_add_email_to_transactions.rb');
+('20250328195954_add_email_to_transactions.rb'),
+('20250330082709_add_status_and_txid_to_transactions.rb');

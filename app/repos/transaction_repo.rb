@@ -1,7 +1,7 @@
 module Hodlhodl
   module Repos
     class TransactionRepo < Hodlhodl::DB::Repo
-      commands :create
+      commands :create, :update
 
       def find_by_uid!(uid)
         transactions.where(uid: uid).one!
