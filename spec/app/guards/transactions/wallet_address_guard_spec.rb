@@ -43,5 +43,13 @@ RSpec.describe Hodlhodl::Guards::Transactions::WalletAddressGuard do
         expect(call).to be_nil
       end
     end
+    
+    context "when bech32 testnet address" do
+      let(:address) { "bc1qw508d6qejxtdg4y5r3zarvary0c5xw7kygt080" }
+
+      it "returns nil" do
+        expect(call).to be_nil
+      end
+    end
   end
 end

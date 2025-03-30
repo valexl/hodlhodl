@@ -13,6 +13,14 @@ module Hodlhodl
       def self.network_fee
         NETWORK_FEE_BTC
       end
+
+      def self.exchange_address
+        ENV.fetch("EXCHANGE_ADDRESS")
+      end
+
+      def self.exchange_wif
+        ENV.fetch("EXCHANGE_WIF")
+      end
     end
   end
 end
