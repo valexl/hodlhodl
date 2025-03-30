@@ -23,13 +23,6 @@
             <h3 class="fw-bold mb-1"><%= '%.8f' % transaction.exchange_fee_btc %> BTC</h3>
             <p class="note-text mb-0">The exchange fee is already included in the displayed amount you'll get</p>
           </div>
-
-          <div class="mb-4">
-            <p class="text-secondary mb-1">Recipient address</p>
-            <div class="border rounded p-3 bg-light">
-              <p class="fw-bold mb-0 text-break"><%= transaction.recipient_address %></p>
-            </div>
-          </div>
         </div>
 
         <!-- Right Column -->
@@ -50,6 +43,26 @@
             <p class="text-secondary mb-1">Exchange rate</p>
             <div class="border rounded p-3 bg-light">
               <p class="fw-bold mb-0">1 USDT ~ <%= '%.8f' % transaction.rate_btc %> BTC</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mb-4">
+            <p class="text-secondary mb-1">Recipient address</p>
+            <div class="border rounded p-3 bg-light">
+              <p class="fw-bold mb-0 text-break"><%= transaction.recipient_address %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="mb-4">
+            <p class="text-secondary mb-1">Transaction ID (TXID)</p>
+            <div class="border rounded p-3 bg-light">
+              <p class="fw-bold mb-0 text-break"><%= transaction.txid %></p>
             </div>
           </div>
         </div>
