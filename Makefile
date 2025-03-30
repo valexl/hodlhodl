@@ -37,6 +37,7 @@ db-migrate:
 
 assets-compile:
 	docker-compose up -d app
+	docker-compose exec app npm install
 	docker-compose exec app bundle exec hanami assets compile	
 
 logs:
@@ -50,3 +51,6 @@ up-db:
 
 up-db-app:
 	docker-compose up -d db app
+
+test:
+	docker-compose run --rm app bundle exec rspec
